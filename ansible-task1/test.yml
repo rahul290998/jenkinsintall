@@ -1,0 +1,13 @@
+- name: Install Jenkins
+  hosts: group2
+  become: yes
+  tasks:
+    - name: Get init password Jenkins
+      shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+      changed_when: false
+      register: result1
+
+    - name: Print init password Jenkins
+      debug:
+        var: result1.stdout
+

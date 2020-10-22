@@ -1,0 +1,14 @@
+- name: Uninstall Jenkins
+  hosts: group1
+  gather_facts: true
+  become: yes
+  tasks:
+     - name: Stop Jenkins server
+       service:
+        name: jenkins
+        state: stopped
+     - name: Uninstall packages
+       package:
+        name: jenkins
+        state: absent
+
