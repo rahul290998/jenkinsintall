@@ -1,0 +1,2 @@
+# Cron job to git clone/pull a repo and then run locally
+*/15 * * * * root ansible-pull -d /home/Rdoli/Ansible-Assignment/pull-example -U https://github.com/rahul290998/simple-java-maven-app >>/var/log/ansible-pull.log 2>&1

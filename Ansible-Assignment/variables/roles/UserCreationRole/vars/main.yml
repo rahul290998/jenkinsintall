@@ -1,0 +1,7 @@
+---
+# vars file for UserCreationRole
+username:
+     test:
+       uname: test2
+       description: Test2 user creation
+

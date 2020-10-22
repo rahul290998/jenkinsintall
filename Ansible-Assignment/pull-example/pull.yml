@@ -1,0 +1,29 @@
+- hosts: group2
+  become: yes
+
+  vars:
+
+    # schedule is fed directly to cron
+    schedule: '*/15 * * * *'
+
+    # User to run ansible-pull as from cron
+    cron_user: root
+
+    # File that ansible will use for logs
+    logfile: /var/log/ansible-pull.log
+
+    # Directory to where repository will be cloned
+    workdir: /home/Rdoli/Ansible-Assignment/pull-example
+
+    # Repository to check out -- YOU MUST CHANGE THIS
+    # repo must contain a local.yml file at top level
+    #repo_url: git://github.com/sfromm/ansible-playbooks.git
+    repo_url: https://github.com/rahul290998/simple-java-maven-app
+
+  tasks:
+
+    - name: Create crontab entry to clone/pull git repository
+      template: src=/home/RDoli/Ansible-Assignment/pull-example/etc_cron.d_ansible-pull.j2 dest=/home/RDoli/Ansible-Assignment/pull-example/cron.d/ansible-pull owner=RDoli group=root mode=0644
+
+    - name: Create logrotate entry for ansible-pull.log
+      template: src=/home/RDoli/Ansible-Assignment/pull-example/etc_logrotate.d_ansible-pull.j2 dest=/home/RDoli/Ansible-Assignment/pull-example/logrotate.d/ansible-pull owner=RDoli group=root mode=0644

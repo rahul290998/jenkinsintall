@@ -1,0 +1,10 @@
+- name: to copy a file
+  hosts: group2
+  gather_facts: yes
+  tasks:
+    - name: copying
+      copy:
+        src: /home/RDoli/project1/target/project1.war
+        dest: /home/RDoli/Ansible-Assignment/copiesfiles/
+        force: yes
+      when: ansible_os_family == "RedHat"

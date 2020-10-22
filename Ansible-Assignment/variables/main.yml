@@ -1,0 +1,22 @@
+- name: new user creation
+  hosts: group2
+  become: yes
+  #vars_file:
+    #- /home/RDoli/Ansible-Assignment/variables/vars/main.yml
+  vars:
+   username: 
+     test:
+       uname: test
+       description: Test user creation
+  roles:
+    - UserCreationRole
+  tasks:
+    - name: user gets created
+      user:
+        name: "{{ username['test']['uname']}}"
+        comment: "{{username['test']['description']}}"
+        state: present
+    - name: for include role 
+      include_role:
+        name: mainrole
+ 

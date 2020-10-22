@@ -1,0 +1,7 @@
+---
+# vars file for mainrole
+username:
+     test:
+       uname: test5
+       description: Test5 user creation
+

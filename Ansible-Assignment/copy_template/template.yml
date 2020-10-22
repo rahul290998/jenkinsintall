@@ -1,0 +1,9 @@
+- hosts: group2
+  vars:
+    variable_to_be_replaced: 'Hello world'
+    inline_variable: 'hello again'
+  tasks:
+    - name: Ansible Template Example
+      template:
+        src: hello_world.j2
+        dest: /home/RDoli/Ansible-Assignment/hello_world.txt

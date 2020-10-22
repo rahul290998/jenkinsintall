@@ -1,0 +1,18 @@
+- hosts: group2
+  vars: 
+    - github_token: "aa1171d44c9e7387ba0c67e6a0ce7a81265b2b32"
+  tasks:
+    - name: Create a github Repo
+      github_repo:
+        github_auth_key: "{{github_token}}"
+        name: "Hello-World"
+        description: "This is your first repository"
+        private: no
+        has_issues: no
+        has_wiki: no
+        has_downloads: no
+    - name: Delete that repo 
+      github_repo:
+        github_auth_key: "{{github_token}}"
+        name: "Hello-World"
+        state: absent

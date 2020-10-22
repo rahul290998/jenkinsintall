@@ -1,0 +1,10 @@
+- hosts: group2
+  remote_user: root
+  become: yes
+  tasks:
+    - name: Install cobbler
+      ansible.builtin.package:
+        name: cobbler
+        state: present
+      environment:
+        http_proxy: http://proxy.example.com:8080
